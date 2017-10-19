@@ -61,6 +61,7 @@ define sshkeys::user (
     }
 
     if ( $fix_permissions == true and $fin_keys != {} ) {
+      notify { "Fix permissions is ${fix_permissions}": }
       $home_param = getparam(User[$user],'home')
       $gid_param  = getparam(User[$user],'gid')
       if ( !$gid_param or $gid_param == '' ) {
